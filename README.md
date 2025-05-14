@@ -1,23 +1,18 @@
-Please see [this repo](https://github.com/laravel-notification-channels/channels) for instructions on how to submit a channel proposal.
+# RuStore push notification channel for Laravel
 
-[//]: # (# A Boilerplate repo for contributions)
-
-[//]: # ()
-[//]: # ([![Latest Version on Packagist]&#40;https://img.shields.io/packagist/v/laravel-notification-channels/ru-store.svg?style=flat-square&#41;]&#40;https://packagist.org/packages/laravel-notification-channels/ru-store&#41;)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/ru-store.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/ru-store)
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-[//]: # ([![Build Status]&#40;https://img.shields.io/travis/laravel-notification-channels/ru-store/master.svg?style=flat-square&#41;]&#40;https://travis-ci.org/laravel-notification-channels/ru-store&#41;)
+[![Build Status](https://img.shields.io/travis/laravel-notification-channels/ru-store/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/ru-store)
 
-[//]: # ([![StyleCI]&#40;https://styleci.io/repos/:style_ci_id/shield&#41;]&#40;https://styleci.io/repos/:style_ci_id&#41;)
+[![StyleCI](https://styleci.io/repos/:style_ci_id/shield)](https://styleci.io/repos/:style_ci_id)
 
-[//]: # ([![SensioLabsInsight]&#40;https://img.shields.io/sensiolabs/i/:sensio_labs_id.svg?style=flat-square&#41;]&#40;https://insight.sensiolabs.com/projects/:sensio_labs_id&#41;)
+[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/ru-store.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/ru-store)
 
-[//]: # ([![Quality Score]&#40;https://img.shields.io/scrutinizer/g/laravel-notification-channels/ru-store.svg?style=flat-square&#41;]&#40;https://scrutinizer-ci.com/g/laravel-notification-channels/ru-store&#41;)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/ru-store/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/ru-store/?branch=master)
 
-[//]: # ([![Code Coverage]&#40;https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/ru-store/master.svg?style=flat-square&#41;]&#40;https://scrutinizer-ci.com/g/laravel-notification-channels/ru-store/?branch=master&#41;)
-
-[//]: # ([![Total Downloads]&#40;https://img.shields.io/packagist/dt/laravel-notification-channels/ru-store.svg?style=flat-square&#41;]&#40;https://packagist.org/packages/laravel-notification-channels/ru-store&#41;)
+[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/ru-store.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/ru-store)
 
 This package makes it easy to send notifications using [RuStore](link to service) with Laravel 10.x.
 
@@ -37,29 +32,23 @@ This package makes it easy to send notifications using [RuStore](link to service
 
 
 ## Installation
-Установите пакет с помощью команды:
+You can install the package via composer:
 ```bash
   composer require yakoffka/laravel-notification-channels-ru-store
 ```
 
-Затем опубликуйте конфигурационный файл:
+Publish the configuration file:
 ```bash
   php artisan vendor:publish --provider="NotificationChannels\RuStore\RuStoreServiceProvider"
 ```
-и обновите ваш .env, указав там значения, полученные в [RuStore консоли](https://console.rustore.ru/waiting)
+Update your .env file with the values obtained from the [RuStore console](https://console.rustore.ru/waiting)
 
-### Setting up the RuStore service
-
-Optionally include a few steps how users can set up the service.
 
 ## Usage
-
-В классе, использующим трейт Notifiable (например User), необходимо реализовать метод, возвращающий массив токенов уведомляемого пользователя:
-
+In a class using the Notifiable trait (e.g., the User model), implement a method that returns an array of the notifiable user’s push tokens:
 ```php
     /**
-     * Получение массива ru-store пуш-токенов, полученных пользователем.
-     * Используется пакетом laravel-notification-channels/rustore
+     * Getting an array of ru-store push tokens of user devices
      *
      * @return array
      */
@@ -69,7 +58,7 @@ Optionally include a few steps how users can set up the service.
     }
 ```
 
-Затем создать класс уведомления, в методе via() которого указать канал отправки RuStoreChannel и добавить метод toRuStore():
+Create a notification class, in the via() method of which specify the RuStoreChannel sending channel and add the toRuStore() method:
 ```php
 <?php
 declare(strict_types=1);
@@ -87,7 +76,7 @@ use NotificationChannels\RuStore\RuStoreChannel;
 use NotificationChannels\RuStore\RuStoreMessage;
 
 /**
- * Уведомление пользователя, отправляемое через консоль для проверки работы канала RuStore
+ * User notification sent via console to check the operation of the RuStore channel
  */
 class RuStoreTestNotification extends Notification implements ShouldQueue
 {
@@ -111,12 +100,12 @@ class RuStoreTestNotification extends Notification implements ShouldQueue
     public function via(User $notifiable): array
     {
         return [
-            RuStoreChannel::class, // указать канал отправки RuStoreChannel
+            RuStoreChannel::class,
         ];
     }
 
     /**
-     * Формирование сообщения, отправляемого через RuStoreChannel
+     * Build the RuStoreMessage to be sent via RuStoreChannel.
      *
      * @param User $notifiable
      * @return RuStoreMessage
@@ -141,19 +130,19 @@ class RuStoreTestNotification extends Notification implements ShouldQueue
 ```
 
 
-#### Проверка отправки уведомлений
-Для контроля отправляемых уведомлений можно воспользоваться событиями, поджигаемыми после отправки:
-- cобытие NotificationSent содержит отчет RuStoreReport в свойстве response: ```$report = $event->response;```
-- cобытие NotificationFailed содержит отчет RuStoreReport в свойстве data['report']: ```$report = Arr::get($event->data, 'report');```
+#### Verifying Notification Delivery
+To monitor sent notifications, use the following events:
+- The NotificationSent event contains a RuStoreReport instance in its response property: ```$report = $event->response;```
+- The NotificationFailed event contains a RuStoreReport instance in its data['report'] property: ```$report = Arr::get($event->data, 'report');```
 
-Метод RuStoreReport::all() вернет коллекцию отчетов RuStoreSingleReport об отправке уведомлений на конкретное устройство с push-токенами в качестве ключей
+The RuStoreReport::all() method returns a collection of RuStoreSingleReport instances, where each report corresponds to a device (keyed by its push token).
 
-Пример использования события NotificationSent:
+Example: Handling the NotificationSent Event
 ```php
     // class SentListener
 
     /**
-     * Обработка успешно отправленных сообщений
+     * Handle successfully sent notifications.
      */
     public function handle(NotificationSent $event): void
     {
@@ -164,7 +153,7 @@ class RuStoreTestNotification extends Notification implements ShouldQueue
     }
 
     /**
-     * Логирование успешно отправленных ru-store-уведомлений
+     * Log successfully sent RuStore notifications.
      */
     public function handleRuStoreSuccess(NotificationSent $event): void
     {
@@ -174,7 +163,7 @@ class RuStoreTestNotification extends Notification implements ShouldQueue
         $report->all()->each(function (RuStoreSingleReport $singleReport, string $token) use ($report, $event): void {
             /** @var Response $response */
             $response = $singleReport->response();
-            Log::channel('notifications')->info('RuStoreSuccess Уведомление успешно отправлено', [
+            Log::channel('notifications')->info('RuStoreSuccess: Notification sent successfully', [
                 'user' => $event->notifiable->short_info,
                 'token' => $token,
                 'message' => $report->getMessage()->toArray(),
@@ -184,10 +173,9 @@ class RuStoreTestNotification extends Notification implements ShouldQueue
     }
 
 ```
-NOTE: Событие NotificationSent поджигается только в случае наличия успешно отправленных сообщений.
+NOTE: The NotificationSent event is only triggered if there are successfully sent messages.
 
-
-Пример использования события NotificationFailed:
+Example: Handling the NotificationFailed Event
 ```php
     // class FailedSendingListener
 
@@ -200,7 +188,7 @@ NOTE: Событие NotificationSent поджигается только в с�
     }
 
     /**
-     * Обработка неудачных отправок уведомлений через канал RuStore
+     * Handle failed RuStore notification deliveries.
      *
      * @param NotificationFailed $event
      * @return void
@@ -212,7 +200,7 @@ NOTE: Событие NotificationSent поджигается только в с�
 
         $report->all()->each(function (RuStoreSingleReport $singleReport, string $token) use ($report, $event): void {
             $e = $singleReport->error();
-            Log::channel('notifications')->error('RuStoreFailed Ошибка отправки уведомления', [
+            Log::channel('notifications')->error('RuStoreFailed: Notification delivery error', [
                 'user' => $event->notifiable->short_info,
                 'token' => $token,
                 'message' => $report->getMessage()->toArray(),
@@ -223,12 +211,12 @@ NOTE: Событие NotificationSent поджигается только в с�
     }
 
 ```
-NOTE: Событие NotificationFailed поджигается только в случае наличия хотя-бы одной неуспешной отправки.
+NOTE: The NotificationFailed event is only triggered if there is at least one failed delivery.
 
 
 ### Available Message methods
 
-Сообщение поддерживает все свойства, описанные в [документации](https://www.rustore.ru/help/sdk/push-notifications/send-push-notifications)
+The message supports all the properties described in the [documentation](https://www.rustore.ru/help/sdk/push-notifications/send-push-notifications).
 
 ## Changelog
 
