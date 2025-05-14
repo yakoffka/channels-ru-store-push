@@ -10,14 +10,14 @@ namespace NotificationChannels\RuStore\Resources;
 class MessageAndroidNotification extends RuStoreResource
 {
     /**
-     * @param  string|null  $title Название уведомления.
-     * @param  string|null  $body Основной текст уведомления.
-     * @param  string|null  $icon Значок уведомления.
-     * @param  string|null  $color Цвет значка уведомления в формате #rrggbb.
-     * @param  string|null  $image Содержит URL-адрес изображения, которое будет отображаться в уведомлении.
-     * @param  string|null  $channel_id Идентификатор канала уведомления.
-     * @param  string|null  $click_action Действие, связанное с кликом пользователя по уведомлению.
-     * @param  int|null  $click_action_type Необязательное поле, тип click_action
+     * @param  string|null  $title  Название уведомления.
+     * @param  string|null  $body  Основной текст уведомления.
+     * @param  string|null  $icon  Значок уведомления.
+     * @param  string|null  $color  Цвет значка уведомления в формате #rrggbb.
+     * @param  string|null  $image  Содержит URL-адрес изображения, которое будет отображаться в уведомлении.
+     * @param  string|null  $channel_id  Идентификатор канала уведомления.
+     * @param  string|null  $click_action  Действие, связанное с кликом пользователя по уведомлению.
+     * @param  int|null  $click_action_type  Необязательное поле, тип click_action
      *                                      0 - click_action будет использоваться как intent action (значение по умолчанию)
      *                                      1 - click_action будет использоваться как deep link
      */

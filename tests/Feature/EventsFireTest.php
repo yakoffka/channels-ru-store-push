@@ -33,6 +33,7 @@ class EventsFireTest extends TestCase
 
         Event::assertDispatched(static function (NotificationSent $event) {
             $tokens = $event->response->all()->keys()->toArray();
+
             return $tokens === ['valid'];
         });
         Event::assertNotDispatched(NotificationFailed::class);
@@ -60,6 +61,7 @@ class EventsFireTest extends TestCase
 
         Event::assertDispatched(static function (NotificationFailed $event) {
             $tokens = $event->data['report']->all()->keys()->toArray();
+
             return $tokens === ['invalid'];
         });
     }
@@ -85,10 +87,12 @@ class EventsFireTest extends TestCase
 
         Event::assertDispatched(static function (NotificationSent $event) {
             $tokens = $event->response->all()->keys()->toArray();
+
             return $tokens === ['valid'];
         });
         Event::assertDispatched(static function (NotificationFailed $event) {
             $tokens = $event->data['report']->all()->keys()->toArray();
+
             return $tokens === ['invalid'];
         });
     }
@@ -115,7 +119,7 @@ class EventsFireTest extends TestCase
                     'code' => 404,
                     'message' => 'Requested entity was not found.',
                     'status' => 'NOT_FOUND',
-                ]
+                ],
             ], 404);
 
         $notifiable->notify($notification);
@@ -123,10 +127,12 @@ class EventsFireTest extends TestCase
 
         Event::assertDispatched(static function (NotificationSent $event) {
             $tokens = $event->response->all()->keys()->toArray();
+
             return $tokens === ['1_valid', '3_valid'];
         });
         Event::assertDispatched(static function (NotificationFailed $event) {
             $tokens = $event->data['report']->all()->keys()->toArray();
+
             return $tokens === ['2_invalid', '4_invalid'];
         });
     }

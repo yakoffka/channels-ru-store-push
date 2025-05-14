@@ -57,7 +57,6 @@ class RuStoreClient
             $request = Http::withToken($this->bearer_token)->withBody($message->getPayload($token));
             /** @var PromiseInterface|Response $response */
             $response = $request->send('POST', $this->url);
-
         } catch (Throwable $exception) {
             return RuStoreSingleReport::failure($exception);
         }

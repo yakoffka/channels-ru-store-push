@@ -16,22 +16,21 @@ class RuStoreMessage
     /**
      * Create a new message instance.
      *
-     * @param  array|null  $data Объект, содержащий пары "key": value.
-     * @param  MessageNotification|null  $notification Базовый шаблон уведомления для использования на всех платформах.
-     * @param  MessageAndroid|null  $android Специальные параметры Android для сообщений.
+     * @param  array|null  $data  Объект, содержащий пары "key": value.
+     * @param  MessageNotification|null  $notification  Базовый шаблон уведомления для использования на всех платформах.
+     * @param  MessageAndroid|null  $android  Специальные параметры Android для сообщений.
      */
     public function __construct(
         public ?array $data = null,
         public ?MessageNotification $notification = null,
         public ?MessageAndroid $android = null,
-    )
-    {
+    ) {
     }
 
     /**
      * Set the message data.
      *
-     * @param array|null $data
+     * @param  array|null  $data
      * @return $this
      */
     public function setData(?array $data): self

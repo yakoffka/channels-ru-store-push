@@ -14,11 +14,11 @@ use NotificationChannels\RuStore\RuStoreMessage;
 final class RuStoreReport
 {
     /**
-     * @param  Collection  $reports Коллекция отчетов об отправке уведомлений с push-токенами в качестве ключей
-     * @param  RuStoreMessage  $message Отправляемое сообщение
+     * @param  Collection  $reports  Коллекция отчетов об отправке уведомлений с push-токенами в качестве ключей
+     * @param  RuStoreMessage  $message  Отправляемое сообщение
      */
     public function __construct(
-        private Collection              $reports,
+        private Collection $reports,
         readonly private RuStoreMessage $message,
     )
     {
@@ -74,7 +74,7 @@ final class RuStoreReport
         $success = clone $this;
         $success->reports = $this->reports->filter(fn (RuStoreSingleReport $report) => $report->isSuccess());
 
-        if($success->reports->count() === 0) {
+        if ($success->reports->count() === 0) {
             throw new RuStorePushNotingSentException();
         }
 

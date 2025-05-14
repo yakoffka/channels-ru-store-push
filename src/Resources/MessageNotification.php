@@ -12,9 +12,9 @@ class MessageNotification extends RuStoreResource
     /**
      * Create a new notification instance.
      *
-     * @param  string|null  $title Название уведомления
-     * @param  string|null  $body Основной текст уведомления
-     * @param  string|null  $image Содержит URL-адрес изображения, которое будет отображаться в уведомлении.
+     * @param  string|null  $title  Название уведомления
+     * @param  string|null  $body  Основной текст уведомления
+     * @param  string|null  $image  Содержит URL-адрес изображения, которое будет отображаться в уведомлении.
      */
     public function __construct(
         public ?string $title = null,

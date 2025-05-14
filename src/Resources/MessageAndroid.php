@@ -10,8 +10,8 @@ namespace NotificationChannels\RuStore\Resources;
 class MessageAndroid extends RuStoreResource
 {
     /**
-     * @param  string|null  $ttl Как долго (в секундах) сообщение должно храниться в хранилище. Пример: '3.5'.
-     * @param  MessageAndroidNotification|null  $notification Уведомление для отправки на устройства Android.
+     * @param  string|null  $ttl  Как долго (в секундах) сообщение должно храниться в хранилище. Пример: '3.5'.
+     * @param  MessageAndroidNotification|null  $notification  Уведомление для отправки на устройства Android.
      */
     public function __construct(
         public ?string $ttl = null,

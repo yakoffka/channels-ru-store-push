@@ -64,6 +64,7 @@ class StatusCodeTest extends TestCase
         Event::assertDispatched(static function (NotificationFailed $event) {
             /** @var RequestException $e */
             $e = $event->data['report']->all()->sole()->error();
+
             return $e->getCode() === 301
                 && $e->getMessage() === 'RuStoreRedirect: {"code":301,"message":"Moved Permanently","status":""}';
         });
@@ -95,6 +96,7 @@ class StatusCodeTest extends TestCase
         Event::assertDispatched(static function (NotificationFailed $event) {
             /** @var RequestException $e */
             $e = $event->data['report']->all()->sole()->error();
+
             return $e->getCode() === 401
                 && $e->getMessage() === 'RuStoreClientError: '
                 .'{"code":401,"message":"unauthorized: Invalid Authorization header","status":"UNAUTHORIZED"}';
@@ -129,6 +131,7 @@ class StatusCodeTest extends TestCase
         Event::assertDispatched(static function (NotificationFailed $event) {
             /** @var RequestException $e */
             $e = $event->data['report']->all()->sole()->error();
+
             return $e->getCode() === 403 && $e->getMessage() === 'RuStoreClientError: '
                 .'{"error":{"code":403,"message":"SenderId mismatch","status":"PERMISSION_DENIED"}}';
         });
@@ -162,6 +165,7 @@ class StatusCodeTest extends TestCase
         Event::assertDispatched(static function (NotificationFailed $event) {
             /** @var RequestException $e */
             $e = $event->data['report']->all()->sole()->error();
+
             return $e->getCode() === 404 && $e->getMessage() === 'RuStoreClientError: '
                 .'{"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}';
         });
@@ -193,6 +197,7 @@ class StatusCodeTest extends TestCase
         Event::assertDispatched(static function (NotificationFailed $event) {
             /** @var RequestException $e */
             $e = $event->data['report']->all()->sole()->error();
+
             return $e->getCode() === 500
                 && $e->getMessage() === 'RuStoreServerError: {"code":500,"message":"Internal Server Error","status":""}';
         });
