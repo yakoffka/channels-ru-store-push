@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore;
@@ -27,10 +28,10 @@ class RuStoreClient
     }
 
     /**
-     * Отправка уведомлений на все устройства пользователя
+     * Отправка уведомлений на все устройства пользователя.
      *
-     * @param RuStoreMessage $message
-     * @param array $tokens
+     * @param  RuStoreMessage  $message
+     * @param  array  $tokens
      * @return RuStoreReport
      */
     public function send(RuStoreMessage $message, array $tokens): RuStoreReport
@@ -44,10 +45,10 @@ class RuStoreClient
     }
 
     /**
-     * Отправка уведомления на конкретное устройство пользователя
+     * Отправка уведомления на конкретное устройство пользователя.
      *
-     * @param RuStoreMessage $message
-     * @param string $token
+     * @param  RuStoreMessage  $message
+     * @param  string  $token
      * @return RuStoreSingleReport
      */
     public function sendSingle(RuStoreMessage $message, string $token): RuStoreSingleReport

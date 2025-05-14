@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore\Resources;
@@ -9,16 +10,16 @@ namespace NotificationChannels\RuStore\Resources;
 class MessageAndroidNotification extends RuStoreResource
 {
     /**
-     * @param string|null $title Название уведомления.
-     * @param string|null $body Основной текст уведомления.
-     * @param string|null $icon Значок уведомления.
-     * @param string|null $color Цвет значка уведомления в формате #rrggbb.
-     * @param string|null $image Содержит URL-адрес изображения, которое будет отображаться в уведомлении.
-     * @param string|null $channel_id Идентификатор канала уведомления.
-     * @param string|null $click_action Действие, связанное с кликом пользователя по уведомлению.
-     * @param int|null $click_action_type Необязательное поле, тип click_action
-     *      0 - click_action будет использоваться как intent action (значение по умолчанию)
-     *      1 - click_action будет использоваться как deep link
+     * @param  string|null  $title Название уведомления.
+     * @param  string|null  $body Основной текст уведомления.
+     * @param  string|null  $icon Значок уведомления.
+     * @param  string|null  $color Цвет значка уведомления в формате #rrggbb.
+     * @param  string|null  $image Содержит URL-адрес изображения, которое будет отображаться в уведомлении.
+     * @param  string|null  $channel_id Идентификатор канала уведомления.
+     * @param  string|null  $click_action Действие, связанное с кликом пользователя по уведомлению.
+     * @param  int|null  $click_action_type Необязательное поле, тип click_action
+     *                                      0 - click_action будет использоваться как intent action (значение по умолчанию)
+     *                                      1 - click_action будет использоваться как deep link
      */
     public function __construct(
         public ?string $title = null,
@@ -28,13 +29,12 @@ class MessageAndroidNotification extends RuStoreResource
         public ?string $image = null,
         public ?string $channel_id = null,
         public ?string $click_action = null,
-        public ?int    $click_action_type = null,
-    )
-    {
+        public ?int $click_action_type = null,
+    ) {
     }
 
     /**
-     * @param string|null $title
+     * @param  string|null  $title
      * @return $this
      */
     public function title(?string $title): self
@@ -47,7 +47,7 @@ class MessageAndroidNotification extends RuStoreResource
     /**
      * Set the notification body.
      *
-     * @param string|null $body
+     * @param  string|null  $body
      * @return $this
      */
     public function body(?string $body): self
@@ -60,7 +60,7 @@ class MessageAndroidNotification extends RuStoreResource
     /**
      * Set the notification icon.
      *
-     * @param string|null $icon
+     * @param  string|null  $icon
      * @return $this
      */
     public function icon(?string $icon): self
@@ -73,7 +73,7 @@ class MessageAndroidNotification extends RuStoreResource
     /**
      * Set the notification color.
      *
-     * @param string|null $color
+     * @param  string|null  $color
      * @return $this
      */
     public function color(?string $color): self
@@ -86,7 +86,7 @@ class MessageAndroidNotification extends RuStoreResource
     /**
      * Set the notification image.
      *
-     * @param string|null $image
+     * @param  string|null  $image
      * @return $this
      */
     public function image(?string $image): self
@@ -99,7 +99,7 @@ class MessageAndroidNotification extends RuStoreResource
     /**
      * Set the notification image.
      *
-     * @param string|null $channel_id
+     * @param  string|null  $channel_id
      * @return $this
      */
     public function channelId(?string $channel_id): self
@@ -112,7 +112,7 @@ class MessageAndroidNotification extends RuStoreResource
     /**
      * Set the notification image.
      *
-     * @param string|null $click_action
+     * @param  string|null  $click_action
      * @return $this
      */
     public function clickAction(?string $click_action): self
@@ -125,7 +125,7 @@ class MessageAndroidNotification extends RuStoreResource
     /**
      * Set the notification image.
      *
-     * @param int|null $click_action_type
+     * @param  int|null  $click_action_type
      * @return $this
      */
     public function clickActionType(?int $click_action_type): self

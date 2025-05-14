@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore\Test\Feature;
@@ -12,7 +13,7 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestDox;
 
 /**
- * NotificationTest - проверка отправки уведомлений
+ * NotificationTest - проверка отправки уведомлений.
  */
 class NotificationTest extends TestCase
 {

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore\Test\Feature;
@@ -9,15 +10,15 @@ use Illuminate\Notifications\Events\NotificationSending;
 use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
+use NotificationChannels\RuStore\Exceptions\RuStorePushNotingSentException;
 use NotificationChannels\RuStore\Test\Notifiable\User;
 use NotificationChannels\RuStore\Test\Notifications\TestNotification;
 use NotificationChannels\RuStore\Test\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestDox;
-use NotificationChannels\RuStore\Exceptions\RuStorePushNotingSentException;
 
 /**
- * StatusCodeTest - проверка обработки некоторых статусов ответа с помощью Http::fake()
+ * StatusCodeTest - проверка обработки некоторых статусов ответа с помощью Http::fake().
  */
 class StatusCodeTest extends TestCase
 {
@@ -96,7 +97,7 @@ class StatusCodeTest extends TestCase
             $e = $event->data['report']->all()->sole()->error();
             return $e->getCode() === 401
                 && $e->getMessage() === 'RuStoreClientError: '
-                . '{"code":401,"message":"unauthorized: Invalid Authorization header","status":"UNAUTHORIZED"}';
+                .'{"code":401,"message":"unauthorized: Invalid Authorization header","status":"UNAUTHORIZED"}';
         });
     }
 
@@ -111,7 +112,7 @@ class StatusCodeTest extends TestCase
                     'code' => 403,
                     'message' => 'SenderId mismatch',
                     'status' => 'PERMISSION_DENIED',
-                ]
+                ],
             ], 403),
         ]);
         $notification = new TestNotification();
@@ -129,7 +130,7 @@ class StatusCodeTest extends TestCase
             /** @var RequestException $e */
             $e = $event->data['report']->all()->sole()->error();
             return $e->getCode() === 403 && $e->getMessage() === 'RuStoreClientError: '
-                . '{"error":{"code":403,"message":"SenderId mismatch","status":"PERMISSION_DENIED"}}';
+                .'{"error":{"code":403,"message":"SenderId mismatch","status":"PERMISSION_DENIED"}}';
         });
     }
 
@@ -144,7 +145,7 @@ class StatusCodeTest extends TestCase
                     'code' => 404,
                     'message' => 'Requested entity was not found.',
                     'status' => 'NOT_FOUND',
-                ]
+                ],
             ], 404),
         ]);
         $notification = new TestNotification();
@@ -162,7 +163,7 @@ class StatusCodeTest extends TestCase
             /** @var RequestException $e */
             $e = $event->data['report']->all()->sole()->error();
             return $e->getCode() === 404 && $e->getMessage() === 'RuStoreClientError: '
-                . '{"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}';
+                .'{"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}';
         });
     }
 

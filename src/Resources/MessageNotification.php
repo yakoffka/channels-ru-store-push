@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore\Resources;
@@ -11,9 +12,9 @@ class MessageNotification extends RuStoreResource
     /**
      * Create a new notification instance.
      *
-     * @param string|null $title Название уведомления
-     * @param string|null $body Основной текст уведомления
-     * @param string|null $image Содержит URL-адрес изображения, которое будет отображаться в уведомлении.
+     * @param  string|null  $title Название уведомления
+     * @param  string|null  $body Основной текст уведомления
+     * @param  string|null  $image Содержит URL-адрес изображения, которое будет отображаться в уведомлении.
      */
     public function __construct(
         public ?string $title = null,
@@ -23,7 +24,7 @@ class MessageNotification extends RuStoreResource
     }
 
     /**
-     * @param string|null $title
+     * @param  string|null  $title
      * @return $this
      */
     public function title(?string $title): self
@@ -36,7 +37,7 @@ class MessageNotification extends RuStoreResource
     /**
      * Set the notification body.
      *
-     * @param string|null $body
+     * @param  string|null  $body
      * @return $this
      */
     public function body(?string $body): self
@@ -49,7 +50,7 @@ class MessageNotification extends RuStoreResource
     /**
      * Set the notification image.
      *
-     * @param string|null $image
+     * @param  string|null  $image
      * @return $this
      */
     public function image(?string $image): self

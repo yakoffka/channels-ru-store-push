@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore;
@@ -15,7 +16,7 @@ class RuStoreServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/ru-store.php' => config_path('ru-store.php'),
+            __DIR__.'/../config/ru-store.php' => config_path('ru-store.php'),
         ]);
     }
 

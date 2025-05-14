@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore\Reports;
@@ -8,13 +9,13 @@ use NotificationChannels\RuStore\Exceptions\RuStorePushNotingSentException;
 use NotificationChannels\RuStore\RuStoreMessage;
 
 /**
- * Отчет об отправке уведомлений на все устройства пользователя
+ * Отчет об отправке уведомлений на все устройства пользователя.
  */
 final class RuStoreReport
 {
     /**
-     * @param Collection $reports Коллекция отчетов об отправке уведомлений с push-токенами в качестве ключей
-     * @param RuStoreMessage $message Отправляемое сообщение
+     * @param  Collection  $reports Коллекция отчетов об отправке уведомлений с push-токенами в качестве ключей
+     * @param  RuStoreMessage  $message Отправляемое сообщение
      */
     public function __construct(
         private Collection              $reports,
@@ -24,10 +25,10 @@ final class RuStoreReport
     }
 
     /**
-     * Инициализация объекта
+     * Инициализация объекта.
      *
-     * @param array $tokens
-     * @param RuStoreMessage $message
+     * @param  array  $tokens
+     * @param  RuStoreMessage  $message
      * @return self
      */
     public static function init(array $tokens, RuStoreMessage $message): self
@@ -39,7 +40,7 @@ final class RuStoreReport
     }
 
     /**
-     * Получение коллекции отчетов
+     * Получение коллекции отчетов.
      *
      * @return Collection<RuStoreSingleReport>
      */
@@ -49,10 +50,10 @@ final class RuStoreReport
     }
 
     /**
-     * Добавление отчета об отправке уведомления адресату $token
+     * Добавление отчета об отправке уведомления адресату $token.
      *
-     * @param string $token
-     * @param RuStoreSingleReport $report
+     * @param  string  $token
+     * @param  RuStoreSingleReport  $report
      * @return self
      */
     public function addReport(string $token, RuStoreSingleReport $report): self
@@ -63,7 +64,7 @@ final class RuStoreReport
     }
 
     /**
-     * Получение отчета об успешных отправках
+     * Получение отчета об успешных отправках.
      *
      * @return RuStoreReport
      * @throws RuStorePushNotingSentException
@@ -81,7 +82,7 @@ final class RuStoreReport
     }
 
     /**
-     * Получение отчета об ошибочных отправках
+     * Получение отчета об ошибочных отправках.
      *
      * @return RuStoreReport
      */
@@ -94,7 +95,7 @@ final class RuStoreReport
     }
 
     /**
-     * Получение отправляемого сообщения
+     * Получение отправляемого сообщения.
      *
      * @return RuStoreMessage
      */

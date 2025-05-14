@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore\Test;
@@ -24,7 +25,7 @@ abstract class TestCase extends Orchestra
     }
 
     /**
-     * @param $app
+     * @param  $app
      * @return class-string[]
      */
     protected function getPackageProviders($app)

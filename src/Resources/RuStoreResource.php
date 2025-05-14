@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore\Resources;
@@ -6,7 +7,7 @@ namespace NotificationChannels\RuStore\Resources;
 abstract class RuStoreResource
 {
     /**
-     * @param ...$args
+     * @param  ...$args
      * @return static
      */
     public static function create(...$args): static

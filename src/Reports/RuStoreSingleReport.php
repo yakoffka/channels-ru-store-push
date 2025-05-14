@@ -9,13 +9,13 @@ use Illuminate\Http\Client\Response;
 use Throwable;
 
 /**
- * Отчет об отправке уведомления на одно из устройств пользователя
+ * Отчет об отправке уведомления на одно из устройств пользователя.
  */
 final class RuStoreSingleReport
 {
     /**
-     * @param PromiseInterface|Response|null $response
-     * @param Throwable|null $error
+     * @param  PromiseInterface|Response|null  $response
+     * @param  Throwable|null  $error
      */
     public function __construct(
         readonly private PromiseInterface|Response|null $response = null,
@@ -25,9 +25,9 @@ final class RuStoreSingleReport
     }
 
     /**
-     * Создание успешного отчета
+     * Создание успешного отчета.
      *
-     * @param PromiseInterface|Response $response
+     * @param  PromiseInterface|Response  $response
      * @return self
      */
     public static function success(PromiseInterface|Response $response): self
@@ -38,10 +38,10 @@ final class RuStoreSingleReport
     }
 
     /**
-     * Создание отчета об ошибке
+     * Создание отчета об ошибке.
      *
-     * @param Throwable $error
-     * @param PromiseInterface|Response|null $response
+     * @param  Throwable  $error
+     * @param  PromiseInterface|Response|null  $response
      * @return self
      */
     public static function failure(Throwable $error, null|PromiseInterface|Response $response = null): self
@@ -65,7 +65,7 @@ final class RuStoreSingleReport
      */
     public function isFailure(): bool
     {
-        return !$this->isSuccess();
+        return ! $this->isSuccess();
     }
 
     /**

@@ -61,6 +61,7 @@ In a class using the Notifiable trait (e.g., the User model), implement a method
 Create a notification class, in the via() method of which specify the RuStoreChannel sending channel and add the toRuStore() method:
 ```php
 <?php
+
 declare(strict_types=1);
 
 namespace App\Notifications\Development;

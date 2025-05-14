@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore\Test\Notifications;
@@ -18,12 +19,12 @@ class TestNotification extends Notification
     }
 
     /**
-     * @param $notifiable
+     * @param  $notifiable
      * @return RuStoreMessage
      */
     public function toRuStore($notifiable): RuStoreMessage
     {
-        return (new RuStoreMessage(
+        return new RuStoreMessage(
             notification: new MessageNotification(
                 title: 'Test Push by RuStore',
                 body: 'Hello! Test body from RuStoreTestingNotification',
@@ -34,6 +35,6 @@ class TestNotification extends Notification
                     body: 'Hello! Android test body from RuStoreTestingNotification',
                 )
             )
-        ));
+        );
     }
 }

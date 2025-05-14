@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace NotificationChannels\RuStore;
@@ -15,14 +16,14 @@ class RuStoreMessage
     /**
      * Create a new message instance.
      *
-     * @param array|null $data Объект, содержащий пары "key": value.
-     * @param MessageNotification|null $notification Базовый шаблон уведомления для использования на всех платформах.
-     * @param MessageAndroid|null $android Специальные параметры Android для сообщений.
+     * @param  array|null  $data Объект, содержащий пары "key": value.
+     * @param  MessageNotification|null  $notification Базовый шаблон уведомления для использования на всех платформах.
+     * @param  MessageAndroid|null  $android Специальные параметры Android для сообщений.
      */
     public function __construct(
-        public ?array              $data = null,
+        public ?array $data = null,
         public ?MessageNotification $notification = null,
-        public ?MessageAndroid      $android = null,
+        public ?MessageAndroid $android = null,
     )
     {
     }
@@ -41,8 +42,9 @@ class RuStoreMessage
     }
 
     /**
-     * @param string $token
+     * @param  string  $token
      * @return string
+     *
      * @throws JsonException
      */
     public function getPayload(string $token): string
