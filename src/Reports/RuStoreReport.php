@@ -20,8 +20,7 @@ final class RuStoreReport
     public function __construct(
         private Collection $reports,
         readonly private RuStoreMessage $message,
-    )
-    {
+    ) {
     }
 
     /**
@@ -67,6 +66,7 @@ final class RuStoreReport
      * Получение отчета об успешных отправках.
      *
      * @return RuStoreReport
+     *
      * @throws RuStorePushNotingSentException
      */
     public function getSuccess(): self

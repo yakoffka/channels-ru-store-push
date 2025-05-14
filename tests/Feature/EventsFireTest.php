@@ -124,7 +124,6 @@ class EventsFireTest extends TestCase
 
         $notifiable->notify($notification);
 
-
         Event::assertDispatched(static function (NotificationSent $event) {
             $tokens = $event->response->all()->keys()->toArray();
 

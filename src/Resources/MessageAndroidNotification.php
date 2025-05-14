@@ -18,8 +18,8 @@ class MessageAndroidNotification extends RuStoreResource
      * @param  string|null  $channel_id  Идентификатор канала уведомления.
      * @param  string|null  $click_action  Действие, связанное с кликом пользователя по уведомлению.
      * @param  int|null  $click_action_type  Необязательное поле, тип click_action
-     *                                      0 - click_action будет использоваться как intent action (значение по умолчанию)
-     *                                      1 - click_action будет использоваться как deep link
+     *                                       0 - click_action будет использоваться как intent action (значение по умолчанию)
+     *                                       1 - click_action будет использоваться как deep link
      */
     public function __construct(
         public ?string $title = null,

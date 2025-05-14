@@ -49,7 +49,6 @@ class RuStoreMessage
     public function getPayload(string $token): string
     {
         return json_encode(['message' => compact('token') + $this->toArray()], JSON_THROW_ON_ERROR);
-
     }
 
     /**

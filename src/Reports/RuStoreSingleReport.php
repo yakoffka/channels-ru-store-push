@@ -20,8 +20,7 @@ final class RuStoreSingleReport
     public function __construct(
         readonly private PromiseInterface|Response|null $response = null,
         readonly private ?Throwable $error = null,
-    )
-    {
+    ) {
     }
 
     /**
